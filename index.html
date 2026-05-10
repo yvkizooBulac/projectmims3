@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday & Happy Anniversary 🎂💕</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0d0d0d;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      font-family: 'Georgia', serif;
+    }
+
+    /* ── Photo Wall ── */
+    .photo-wall {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 12px 0;
+      overflow: hidden;
+    }
+
+    .row {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+      width: max-content;
+      animation: scroll-left 30s linear infinite;
+    }
+
+    .row:nth-child(even) {
+      animation: scroll-right 35s linear infinite;
+    }
+
+    .row img {
+      height: 180px;
+      width: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+      flex-shrink: 0;
+      filter: brightness(0.75) saturate(1.1);
+      transition: filter 0.3s;
+    }
+
+    .row img:hover {
+      filter: brightness(1) saturate(1.3);
+    }
+
+    @keyframes scroll-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes scroll-right {
+      0%   { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* ── Dark overlay so text pops ── */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.65) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* ── Center content ── */
+    .center {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .title {
+      color: #fff;
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      font-weight: bold;
+      text-shadow: 0 2px 20px rgba(255,150,180,0.8);
+      letter-spacing: 2px;
+      line-height: 1.4;
+    }
+
+    .subtitle {
+      color: #ffcce0;
+      font-size: clamp(0.9rem, 2vw, 1.3rem);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 10px rgba(255,100,150,0.6);
+    }
+
+    /* ── Letter Button ── */
+    .letter-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .envelope {
+      font-size: 5rem;
+      filter: drop-shadow(0 4px 16px rgba(255,100,150,0.7));
+      transition: transform 0.3s;
+    }
+
+    .letter-btn:hover .envelope {
+      transform: scale(1.15) rotate(-5deg);
+    }
+
+    .letter-label {
+      color: #fff;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: rgba(255,100,150,0.25);
+      border: 1px solid rgba(255,150,180,0.5);
+      padding: 8px 22px;
+      border-radius: 30px;
+      backdrop-filter: blur(6px);
+      transition: background 0.3s;
+    }
+
+    .letter-btn:hover .letter-label {
+      background: rgba(255,100,150,0.5);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* ── Floating hearts ── */
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -60px;
+      font-size: 1.4rem;
+      opacity: 0;
+      animation: rise linear infinite;
+    }
+
+    @keyframes rise {
+      0%   { transform: translateY(0) scale(0.8); opacity: 0.8; }
+      100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Photo Wall -->
+  <div class="photo-wall" id="photoWall">
+
+    <div class="row">
+      <img src="photo1.jpg" alt="our memory">
+      <img src="photo2.jpg" alt="our memory">
+      <img src="photo3.jpg" alt="our memory">
+      <img src="photo4.jpg" alt="our memory">
+      <img src="photo5.jpg" alt="our memory">
+      <img src="photo6.jpg" alt="our memory">
+      <img src="photo7.jpg" alt="our memory">
+      <img src="photo8.jpg" alt="our memory">
+      <img src="photo9.jpg" alt="our memory">
+      <img src="photo10.jpg" alt="our memory">
+      <!-- duplicate for seamless loop -->
+      <img src="photo1.jpg" alt="our memory">
+      <img src="photo2.jpg" alt="our memory">
+      <img src="photo3.jpg" alt="our memory">
+      <img src="photo4.jpg" alt="our memory">
+      <img src="photo5.jpg" alt="our memory">
+      <img src="photo6.jpg" alt="our memory">
+      <img src="photo7.jpg" alt="our memory">
+      <img src="photo8.jpg" alt="our memory">
+      <img src="photo9.jpg" alt="our memory">
+      <img src="photo10.jpg" alt="our memory">
+    </div>
+
+    <div class="row">
+      <img src="photo6.jpg" alt="our memory">
+      <img src="photo7.jpg" alt="our memory">
+      <img src="photo8.jpg" alt="our memory">
+      <img src="photo9.jpg" alt="our memory">
+      <img src="photo10.jpg" alt="our memory">
+      <img src="photo1.jpg" alt="our memory">
+      <img src="photo2.jpg" alt="our memory">
+      <img src="photo3.jpg" alt="our memory">
+      <img src="photo4.jpg" alt="our memory">
+      <img src="photo5.jpg" alt="our memory">
+      <!-- duplicate for seamless loop -->
+      <img src="photo6.jpg" alt="our memory">
+      <img src="photo7.jpg" alt="our memory">
+      <img src="photo8.jpg" alt="our memory">
+      <img src="photo9.jpg" alt="our memory">
+      <img src="photo10.jpg" alt="our memory">
+      <img src="photo1.jpg" alt="our memory">
+      <img src="photo2.jpg" alt="our memory">
+      <img src="photo3.jpg" alt="our memory">
+      <img src="photo4.jpg" alt="our memory">
+      <img src="photo5.jpg" alt="our memory">
+    </div>
+
+    <div class="row">
+      <img src="photo3.jpg" alt="our memory">
+      <img src="photo5.jpg" alt="our memory">
+      <img src="photo7.jpg" alt="our memory">
+      <img src="photo9.jpg" alt="our memory">
+      <img src="photo1.jpg" alt="our memory">
+      <img src="photo4.jpg" alt="our memory">
+      <img src="photo6.jpg" alt="our memory">
+      <img src="photo8.jpg" alt="our memory">
+      <img src="photo10.jpg" alt="our memory">
+      <img src="photo2.jpg" alt="our memory">
+      <!-- duplicate for seamless loop -->
+      <img src="photo3.jpg" alt="our memory">
+      <img src="photo5.jpg" alt="our memory">
+      <img src="photo7.jpg" alt="our memory">
+      <img src="photo9.jpg" alt="our memory">
+      <img src="photo1.jpg" alt="our memory">
+      <img src="photo4.jpg" alt="our memory">
+      <img src="photo6.jpg" alt="our memory">
+      <img src="photo8.jpg" alt="our memory">
+      <img src="photo10.jpg" alt="our memory">
+      <img src="photo2.jpg" alt="our memory">
+    </div>
+
+    <div class="row">
+      <img src="photo10.jpg" alt="our memory">
+      <img src="photo8.jpg" alt="our memory">
+      <img src="photo6.jpg" alt="our memory">
+      <img src="photo4.jpg" alt="our memory">
+      <img src="photo2.jpg" alt="our memory">
+      <img src="photo9.jpg" alt="our memory">
+      <img src="photo7.jpg" alt="our memory">
+      <img src="photo5.jpg" alt="our memory">
+      <img src="photo3.jpg" alt="our memory">
+      <img src="photo1.jpg" alt="our memory">
+      <!-- duplicate for seamless loop -->
+      <img src="photo10.jpg" alt="our memory">
+      <img src="photo8.jpg" alt="our memory">
+      <img src="photo6.jpg" alt="our memory">
+      <img src="photo4.jpg" alt="our memory">
+      <img src="photo2.jpg" alt="our memory">
+      <img src="photo9.jpg" alt="our memory">
+      <img src="photo7.jpg" alt="our memory">
+      <img src="photo5.jpg" alt="our memory">
+      <img src="photo3.jpg" alt="our memory">
+      <img src="photo1.jpg" alt="our memory">
+    </div>
+
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Floating Hearts -->
+  <div class="hearts" id="hearts"></div>
+
+  <!-- Center Content -->
+  <div class="center">
+    <div class="subtitle">Happy 1st Anniversary &amp; Birthday 🎂</div>
+    <div class="title">To My Favorite Person<br>in the Whole World 💕</div>
+
+    <a class="letter-btn" href="letter.html" target="_blank">
+      <span class="envelope">💌</span>
+      <span class="letter-label">Open My Letter to You</span>
+    </a>
+  </div>
+
+  <script>
+    // ── Floating hearts ───────────────────────────────────────────────
+    const heartsEl = document.getElementById('hearts');
+    const heartChars = ['❤️','💕','💖','💗','💓','🌸','✨'];
+
+    function spawnHeart() {
+      const h = document.createElement('span');
+      h.className = 'heart';
+      h.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+      h.style.left = Math.random() * 100 + 'vw';
+      const dur = 6 + Math.random() * 8;
+      h.style.animationDuration = dur + 's';
+      h.style.animationDelay = Math.random() * 4 + 's';
+      h.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+      heartsEl.appendChild(h);
+      setTimeout(() => h.remove(), (dur + 4) * 1000);
+    }
+
+    setInterval(spawnHeart, 600);
+  </script>
+</body>
+</html>
